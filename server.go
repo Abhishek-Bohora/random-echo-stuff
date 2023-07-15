@@ -16,6 +16,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	// CORS middleware
+	e.Use(middleware.CORS())
+
 	// Group level middleware
 	g := e.Group("/admin")
 	g.Use(middleware.BasicAuth(func(username, password string, ctx echo.Context) (bool, error) {
